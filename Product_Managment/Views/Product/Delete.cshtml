@@ -1,0 +1,38 @@
+﻿@model Product_Managment_Model.Product
+
+<div class="d-flex container-fluid gap-5">
+    <h1> Delete </h1>
+    <a asp-action="Index" class="btn btn-secondary h-25 px-4 fw-bold align-self-center">Back to list</a>
+</div>
+<div class="row col-md-4 py-3">
+    <form class="form-control" method="post">
+        <input style="display: none" asp-for="Id" />
+        <div class="form-group p-2">
+            <label asp-for="Name" class="control-label"></label>
+            <input disabled value="@Model.Name" asp-for="Name" type="text" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group p-2">
+            <label asp-for="Description" class="control-label"></label>
+            <input disabled value="@Model.Description" asp-for="Description" type="text" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group p-2">
+            <label asp-for="Price" class="control-label"></label>
+            <input disabled value="@Model.Price" asp-for="Price" type="number" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="form-group p-2">
+            <label asp-for="Stock" class="control-label"></label>
+            <input disabled value="@Model.Stock" asp-for="Stock" type="number" class="form-control" />
+            <span asp-validation-for="Stock" class="text-danger"></span>
+        </div>
+        <div class="form-group p-2">
+            <label asp-for="IsEdible" class="control-label"></label>
+            <input disabled value="@Model.IsEdible" asp-for="IsEdible" type="" class="form-control" />
+            <span asp-validation-for="IsEdible" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-danger px-3 py-2 fw-bold mt-2">Delete</button>
+    </form>
+</div>
