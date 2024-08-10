@@ -28,8 +28,4 @@
     <ProjectReference Include="..\Product_Managment_Repository\Product_Managment_Repository.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Identity\Data\" />
-  </ItemGroup>
-
 </Project>
