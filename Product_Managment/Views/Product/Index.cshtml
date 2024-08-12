@@ -1,8 +1,12 @@
-﻿@model List<Product_Managment_Model.Product>
+﻿@using Produuct_Managment_Services
+@model List<Product_Managment_Model.Product>
 
 <div class="d-flex container-fluid justify-content-between">
 	<h1> Products </h1>
+	@if (User.IsInRole(SD.Role_Store))
+	{
 	<a asp-action="Create" class="btn btn-primary h-25 px-4 fw-bold align-self-center">Add new Product</a>
+	}
 </div>
 <table class="table table-striped bg-dark text-light">
 		<thead>
@@ -11,7 +15,10 @@
 			<td>Stock</td>
 			<td>Edible</td>
 			<td>Category</td>
+		@if (User.IsInRole(SD.Role_Store))
+		{
 			<td></td>
+		}
 		</thead>
 		<tbody>
 		@if (Model != null)
@@ -31,12 +38,16 @@
 						}
 						</td>
 					<td>@product.Category.Name </td>
+					@if (User.IsInRole(SD.Role_User_Admin))
+					{
+						
 					<td>
 						<div class="btn-group">
 							<a class="btn btn-outline-warning mx-2 w-75" asp-action="Edit" asp-route-id="@product.Id">Edit</a>
 							<a class="btn btn-outline-danger w-75" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
 						</div>
 					</td>
+					}
 				</tr>
 			}
 		}

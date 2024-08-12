@@ -5,11 +5,13 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product_Managment", "Product_Managment\Product_Managment.csproj", "{1EAD64C4-B7D7-4B1B-9FAC-8592BD64C710}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product_Managment_Model", "Product_Managment_Model\Product_Managment_Model.csproj", "{59137CF4-F5D8-49B4-8699-6983648EA2E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product_Managment_Model", "Product_Managment_Model\Product_Managment_Model.csproj", "{59137CF4-F5D8-49B4-8699-6983648EA2E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product_Managment_DataSource", "Product_Managment_DataSource\Product_Managment_DataSource.csproj", "{C2CECEEF-2E51-4FE4-BF2D-2473E55ACE8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product_Managment_DataSource", "Product_Managment_DataSource\Product_Managment_DataSource.csproj", "{C2CECEEF-2E51-4FE4-BF2D-2473E55ACE8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product_Managment_Repository", "Product_Managment_Repository\Product_Managment_Repository.csproj", "{02CB5F76-7A84-4E5D-9383-B8375F0506A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product_Managment_Repository", "Product_Managment_Repository\Product_Managment_Repository.csproj", "{02CB5F76-7A84-4E5D-9383-B8375F0506A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Produuct_Managment_Services", "Produuct_Managment_Services\Produuct_Managment_Services.csproj", "{871D300B-576C-4007-AFD2-1D73F2C8E2E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{02CB5F76-7A84-4E5D-9383-B8375F0506A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02CB5F76-7A84-4E5D-9383-B8375F0506A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02CB5F76-7A84-4E5D-9383-B8375F0506A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{871D300B-576C-4007-AFD2-1D73F2C8E2E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{871D300B-576C-4007-AFD2-1D73F2C8E2E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{871D300B-576C-4007-AFD2-1D73F2C8E2E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{871D300B-576C-4007-AFD2-1D73F2C8E2E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Product_Managment_DataSource\Product_Managment_DataSource.csproj" />
     <ProjectReference Include="..\Product_Managment_Repository\Product_Managment_Repository.csproj" />
+    <ProjectReference Include="..\Produuct_Managment_Services\Produuct_Managment_Services.csproj" />
   </ItemGroup>
 
 </Project>

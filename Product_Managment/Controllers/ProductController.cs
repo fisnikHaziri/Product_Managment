@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Product_Managment_DataSource;
 using Product_Managment_Model;
 using Product_Managment_Repository.Interface;
+using Produuct_Managment_Services;
 
 namespace Product_Managment.Controllers
 {
@@ -20,7 +22,9 @@ namespace Product_Managment.Controllers
 			return View(_repo.GetAll());
 		}
 
-		public IActionResult Create()
+
+        [Authorize(Roles = SD.Role_Store)]
+        public IActionResult Create()
 		{
 			ViewBag.Categories = new SelectList( _repo.ReturnCategories(),"CategoryId", "Name");
 			return View();
