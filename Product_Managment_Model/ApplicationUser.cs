@@ -18,5 +18,7 @@ namespace Product_Managment_Model
         public string? State { get; set; }
         public string? PostlCode { get; set; }
 
-    }
+
+		public virtual ICollection<Product> Products { get; set; }
+	}
 }

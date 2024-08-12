@@ -6,11 +6,25 @@ using Product_Managment_DataSource;
 using Product_Managment_Model;
 using Product_Managment_Repository.Interface;
 using Produuct_Managment_Services;
+using System.Security.Claims;
 
 namespace Product_Managment.Controllers
 {
 	public class ProductController : Controller
 	{
+		public class ProductViewModel
+		{
+            public ProductViewModel(List<Product> products, bool isAdmin,bool IsProductCreator)
+            {
+				this.Products = products;
+				this.IsAdmin = isAdmin;
+				this.IsProductCreator = IsProductCreator;
+            }
+            public List<Product> Products { get; set; }
+			public bool IsAdmin { get; set; }
+			public bool IsProductCreator { get; set; }
+		}
+
 		private readonly IProductRepository _repo;
         public ProductController(IProductRepository repo, ApplicationDbContext context)
         {
@@ -19,11 +33,12 @@ namespace Product_Managment.Controllers
 
         public IActionResult Index()
 		{
-			return View(_repo.GetAll());
+			var data = _repo.GetAll();
+			return View(data);
 		}
 
 
-        [Authorize(Roles = SD.Role_Store)]
+		[Authorize(Roles = "Store,Admin")]
         public IActionResult Create()
 		{
 			ViewBag.Categories = new SelectList( _repo.ReturnCategories(),"CategoryId", "Name");
@@ -34,7 +49,8 @@ namespace Product_Managment.Controllers
         {
 			if(product != null)
 			{
-				_repo.Create(product);
+				var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+				_repo.Create(product,userId);
 			}
 			else
 			{

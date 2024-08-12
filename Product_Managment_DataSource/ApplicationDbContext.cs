@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using Product_Managment_Model;
 
 namespace Product_Managment_DataSource
@@ -25,6 +26,9 @@ namespace Product_Managment_DataSource
                 new Category { CategoryId = 3, Name = "History",}
 
                 );
-        }
+
+			// Configuring the relationship between Product and ApplicationUser
+			modelBuilder.Entity<Product>().HasOne(p => p.User).WithMany(u => u.Products).HasForeignKey(p => p.UserId);
+		}
     }
 }

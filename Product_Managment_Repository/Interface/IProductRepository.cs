@@ -11,7 +11,7 @@ namespace Product_Managment_Repository.Interface
 	{
 		public ICollection<Product> GetAll();
 		public Product GetById(int id);
-		public void Create(Product product);
+		public void Create(Product product, string userId);
 		public void Update(Product product);
 		public void Delete(Product product);
 		public IEnumerable<Category> ReturnCategories();
