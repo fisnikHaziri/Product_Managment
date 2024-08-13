@@ -8,56 +8,54 @@
 	<a asp-action="Create" class="btn btn-primary h-25 px-4 fw-bold align-self-center">Add new Product</a>
 	}
 </div>
-<table class="table table-striped bg-dark text-light p-3 text-center fw-light table-hover">
-	<thead class="fw-bold ">
-			<td>Store</td>
-			<td>Name</td>
-			<td>Price</td>
-			<td>Stock</td>
-			<td>Edible</td>
-			<td>Category</td>
-		@if (User.Identity.IsAuthenticated)
-		{
-			<td></td>
-		}
-		</thead>
-		<tbody>
-		@if (Model != null)
-		{
-			@foreach(var product in Model)
-			{
-				<tr class="text-light">
-					<td>@(product.User != null ? product.User.Name : "Unknown")</td>  <!-- Null check -->
-					<td>@product.Name</td>
-					<td>@product.Price <i class="bi bi-currency-euro"></i></td>
-					<td>@product.Stock</td>
-					<td>
-						@if (product.IsEdible.ToString() == "True")
-						{
-							<i class="bi bi-check-circle"></i>
-						}else{
-							<i class="bi bi-x-circle"></i>
-						}
-						</td>
-					<td>@product.Category.Name </td>
-					<td>
-					
-						<div class="btn-group">
-							@if( User.Identity.IsAuthenticated){
-								@if (User.IsInRole("Admin") || product.User.Email == User.Identity.Name)
-								{
-									<a class="btn btn-outline-warning mx-2 w-75" asp-action="Edit" asp-route-id="@product.Id">Edit</a>
-									<a class="btn btn-outline-danger w-75" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
-								}
-								else
-								{
-									<a class="btn btn-outline-info w-100 px-4">Add to cart <i class="bi bi-cart-plus"></i></a>
-								}
+<hr class="productHr" />
+@if(Model != null)
+{
+	<div class="container d-flex flex-wrap justify-content-sm-center justify-content-md-start">
+		@foreach(var product in Model)
+	{
+			<div class="mb-4 flex-shrink-1" style="width: 19rem;">
+				<div class="card bg-dark text-light" style="width: 18rem; height: 400px">
+			<div class="card-body">
+				<h3 class="card-title text-center p-2">@product.Name</h3>
+				<div class="d-flex justify-content-between">
+					<h6 class="card-subtitle mb-2 text-body-secondary col-6" style="border-right: 1px solid whitesmoke">@product.User.Name</h6>
+					<h6 class="card-subtitle mb-2 text-body-secondary">Price: @product.Price</h6>
+				</div>
+				<hr style="margin:3px 15% ;width: 70%" />
+				<p class="card-text " style="height:170px; overflow-y: auto">@product.Description</p>
+				<hr style="margin:5px 15% ;width: 70%" />
+				<div class="d-flex justify-content-between pb-0 mb-0">
+					<p>Is Edible:
+							@if (product.IsEdible.ToString() == "True")
+							{
+								<i class="bi bi-check-circle"></i>
 							}
-						</div>
-					</td>
-				</tr>
-			}
-		}
-		</tbody>
-	</table>
+							else
+							{
+								<i class="bi bi-x-circle"></i>
+							}
+						</p>
+					<p>Category: @product.Category.Name</p>
+				</div>
+			</div>
+					<div class="btn-group align-self-baseline pb-3">
+						@if (User.Identity.IsAuthenticated)
+						{
+							@if (User.IsInRole("Admin") || product.User.Email == User.Identity.Name)
+							{
+								<a class="btn btn-outline-warning mx-2 w-75" asp-action="Edit" asp-route-id="@product.Id">Edit</a>
+								<a class="btn btn-outline-danger w-75" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+							}
+							else if (User.IsInRole("Costumer"))
+							{
+								<a class="btn btn-outline-info w-100 ml-3 px-4" style="margin-left:10px">Add to cart <i class="bi bi-cart-plus"></i></a>
+							}
+						}
+					</div>
+			</div>
+		</div>
+	}
+	</div>
+
+}

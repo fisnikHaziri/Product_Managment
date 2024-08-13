@@ -1,9 +1,6 @@
 ﻿@model Product_Managment_Model.Product
 
-<div class="d-flex container-fluid justify-content-between">
     <h1> Create </h1>
-    <a asp-action="Index" class="btn btn-secondary h-25 px-4 fw-bold align-self-center">Back to list</a>
-</div>
 <div class="row col-md-4 py-3">
     <form class="form-control" method="post">
     <input style="display: none" asp-for="Id"/>
@@ -37,13 +34,10 @@
         <div class="form-group p-2">
             <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories" required>
                 <option value="" disabled selected hidden> -- Select Category -- </option>
-                @foreach (var item in ViewBag.Categories)
-                {
-                    <option value="@item.Value">@item.Text</option>
-                }
             </select>
             <span asp-validation-for="CategoryId" class="text-danger" />
         </div>
-    <button type="submit" class="btn btn-primary px-3 py-2 fw-bold mt-2">Create</button>
+    <button type="submit" class="col-4 btn btn-primary px-3 py-2 fw-bold mt-2">Create</button>
+        <button class="col-4 btn btn-secondary px-3 py-2 fw-bold mt-2 mx-2"><a class="text-light text-decoration-none" asp-action="Index">Back to list</a></button>
 </form>
 </div>

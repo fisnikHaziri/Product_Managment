@@ -1,9 +1,6 @@
 ﻿@model Product_Managment_Model.Product
 
-<div class="d-flex container-fluid gap-5">
     <h1> Delete </h1>
-    <a asp-action="Index" class="btn btn-secondary h-25 px-4 fw-bold align-self-center">Back to list</a>
-</div>
 <div class="row col-md-4 py-3">
     <form class="form-control" method="post">
         <input style="display: none" asp-for="Id" />
@@ -44,6 +41,7 @@
             <span asp-validation-for="CategoryId" class="text-danger" />
         </div>
 
-        <button type="submit" class="btn btn-warning px-3 py-2 fw-bold mt-2">Edit</button>
+        <button type="submit" class="col-4 btn btn-warning px-3 py-2 fw-bold mt-2">Edit</button>
+        <button class="col-4 btn btn-secondary px-3 py-2 fw-bold mt-2 mx-2"><a class="text-light text-decoration-none" asp-action="Index">Back to list</a></button>
     </form>
 </div>
