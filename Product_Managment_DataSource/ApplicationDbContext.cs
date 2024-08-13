@@ -31,6 +31,11 @@ namespace Product_Managment_DataSource
                 .HasOne(p => p.User)
                 .WithMany(u => u.Products)
                 .HasForeignKey(p => p.UserId);
+
+            modelBuilder.Entity<Category>()
+                .HasMany(c => c.Products)
+                .WithOne(p => p.Category)
+                .HasForeignKey(p => p.CategoryId);
 		}
     }
 }

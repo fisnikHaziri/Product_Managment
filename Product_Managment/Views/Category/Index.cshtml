@@ -1,0 +1,31 @@
+﻿@using Produuct_Managment_Services
+@model List<Product_Managment_Model.Category>
+
+<div class="d-flex container-fluid justify-content-between">
+	<h1> Categories </h1>
+	@if (User.IsInRole(SD.Role_User_Admin))
+	{
+		<a asp-action="Create" class="btn btn-primary h-25 px-4 fw-bold align-self-center">Add new Category</a>
+	}
+</div>
+<hr class="productHr" />
+<table class="table bg-dark text-light text-center ">
+	<thead>
+		<td>Name</td>
+		<td>Description</td>
+		<td>Amount of Products</td>
+	</thead>
+	<tbody class="text-light">
+		@if (Model != null)
+		{
+			@foreach (var categoy in Model)
+			{
+				<tr>
+				<td>@categoy.Name</td>
+				<td>@categoy.Description</td>
+				<td>@categoy.Products.Count</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>
