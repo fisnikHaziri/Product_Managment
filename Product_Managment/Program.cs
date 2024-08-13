@@ -16,7 +16,7 @@ builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 
 var connectionString = builder.Configuration.GetConnectionString("defaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(x => x.UseSqlite(connectionString));
+builder.Services.AddDbContext<ApplicationDbContext>(x => x.UseSqlServer(connectionString));
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole >().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 builder.Services.AddScoped<IEmailSender, EmailSender>();

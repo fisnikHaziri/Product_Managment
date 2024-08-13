@@ -7,6 +7,7 @@
 <div class="row col-md-4 py-3">
     <form class="form-control" method="post">
         <input style="display: none" asp-for="Id" />
+        <input style="display: none" asp-for="UserId" />
         <div class="form-group p-2">
             <label asp-for="Name" class="control-label"></label>
             <input value="@Model.Name" asp-for="Name" type="text" class="form-control" />

@@ -66,6 +66,7 @@ namespace Product_Managment.Controllers
 		}
 
 		[HttpPost]
+		[Authorize(Roles = "Store,Admin,Employee")]
 		public IActionResult Edit(Product product)
 		{
 			if (product.Id != 0)

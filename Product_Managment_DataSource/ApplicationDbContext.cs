@@ -21,14 +21,16 @@ namespace Product_Managment_DataSource
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Category>().HasData(
-                new Category { CategoryId = 1, Name = "Action",},
-                new Category { CategoryId = 2, Name = "SciFi",},
-                new Category { CategoryId = 3, Name = "History",}
-
+                new Category { CategoryId = 1, Name = "Candy", },
+                new Category { CategoryId = 2, Name = "Detergent", },
+                new Category { CategoryId = 3, Name = "Ciggarets", }
                 );
 
-			// Configuring the relationship between Product and ApplicationUser
-			modelBuilder.Entity<Product>().HasOne(p => p.User).WithMany(u => u.Products).HasForeignKey(p => p.UserId);
+            // Configuring the relationship between Product and ApplicationUser
+            modelBuilder.Entity<Product>()
+                .HasOne(p => p.User)
+                .WithMany(u => u.Products)
+                .HasForeignKey(p => p.UserId);
 		}
     }
 }

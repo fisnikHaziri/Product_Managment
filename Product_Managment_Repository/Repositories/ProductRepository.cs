@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Product_Managment_DataSource;
-using Product_Managment_DataSource.Migrations;
 using Product_Managment_Model;
 using Product_Managment_Repository.Interface;
 using SQLitePCL;
