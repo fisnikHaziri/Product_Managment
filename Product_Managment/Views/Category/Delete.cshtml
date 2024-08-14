@@ -1,0 +1,21 @@
+﻿@model Product_Managment_Model.Category
+
+<h1> Delete </h1>
+<div class="row col-md-4 py-3">
+    <form class="form-control" method="post">
+        <input style="display: none" asp-for="CategoryId" />
+        <div class="form-group p-2">
+            <label asp-for="Name" class="control-label"></label>
+            <input disabled value="@Model.Name" asp-for="Name" type="text" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group p-2">
+            <label asp-for="Description" class="control-label"></label>
+            <input disabled value="@Model.Description" asp-for="Description" type="text" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="col-4 btn btn-danger px-3 py-2 fw-bold mt-2">Delete</button>
+        <button class="col-4 btn btn-secondary px-3 py-2 fw-bold mt-2 mx-2"><a class="text-light text-decoration-none" asp-action="Index">Back to list</a></button>
+    </form>
+</div>

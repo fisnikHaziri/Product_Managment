@@ -14,6 +14,10 @@
 		<td>Name</td>
 		<td>Description</td>
 		<td>Amount of Products</td>
+		@if (User.IsInRole("Admin"))
+		{
+			<td></td>
+		}
 	</thead>
 	<tbody class="text-light">
 		@if (Model != null)
@@ -21,9 +25,22 @@
 			@foreach (var categoy in Model)
 			{
 				<tr>
-				<td>@categoy.Name</td>
+					<td>
+						<a asp-action="Products" asp-route-id="@categoy.CategoryId" class="btn btn-secondary w-50">
+							<h6>
+						@categoy.Name
+							</h6>
+						</a>
+						</td>
 				<td>@categoy.Description</td>
 				<td>@categoy.Products.Count</td>
+					@if (User.IsInRole("Admin"))
+					{
+						<td>
+							<a class="btn btn-outline-warning mx-2" asp-action="Update" asp-route-id="@categoy.CategoryId">Edit</a>
+							<a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@categoy.CategoryId">Delete</a>
+						</td>
+					}
 				</tr>
 			}
 		}

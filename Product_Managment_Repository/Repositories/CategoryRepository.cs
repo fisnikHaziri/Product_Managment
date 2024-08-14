@@ -20,8 +20,42 @@ namespace Product_Managment_Repository.Repositories
 
 		public ICollection<Category> GetAll()
 		{
-			var data = _context.categories.ToList();
+			var data = _context.categories.Include(c => c.Products).ToList();
 			return data;
 		}
-	}
+
+		public void Create(Category category)
+		{
+			_context.categories.Add(category);
+			_context.SaveChanges();
+		}
+
+		public void Update(Category category)
+		{
+			_context.categories.Update(category);
+			_context.SaveChanges();
+		}
+
+		public void Delete(Category category)
+		{
+			_context.categories.Remove(category);
+			_context.SaveChanges();
+		}
+
+		public Category GetByID(int id)
+		{
+			var data = _context.categories.FirstOrDefault(x => x.CategoryId == id);
+			return data;
+		}
+
+        public Category ReturnListOfProducts(int id)
+		{
+			var category = _context.categories.
+				Include(c => c.Products)
+				.ThenInclude(p => p.User)
+				.FirstOrDefault(c => c.CategoryId == id);
+			return category;
+		}
+
+    }
 }

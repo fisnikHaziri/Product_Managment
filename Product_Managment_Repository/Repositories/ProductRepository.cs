@@ -26,6 +26,7 @@ namespace Product_Managment_Repository.Repositories
 			var data = _context.products.Include(x => x.Category).Include(p => p.User).ToList();
 			return data;
 		}
+
 		public void Create(Product product, string userId)
 		{
 			if(product.Name == null)
@@ -36,20 +37,24 @@ namespace Product_Managment_Repository.Repositories
 			_context.products.Add(product);
 			_context.SaveChanges();
 		}
+
 		public void Update(Product product)
 		{
 			_context.products.Update(product);
 			_context.SaveChanges();
 		}
+
 		public void Delete(Product product) 
 		{
 			_context.products.Remove(product);
 			_context.SaveChanges();
 		}
+
 		public IEnumerable<Category> ReturnCategories()
 		{
 			return _context.categories.ToList();
 		}
+
 		public Product GetById(int id)
 		{
 			var data = _context.products.FirstOrDefault(x => x.Id == id);

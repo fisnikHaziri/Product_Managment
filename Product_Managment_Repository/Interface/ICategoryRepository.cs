@@ -10,5 +10,12 @@ namespace Product_Managment_Repository.Interface
 	public interface ICategoryRepository
 	{
 		public ICollection<Category> GetAll();
+		public void Create(Category category);
+		public void Update(Category category);
+		public void Delete(Category category);
+		public Category GetByID(int id);
+
+		public Category ReturnListOfProducts(int id);
+
 	}
 }

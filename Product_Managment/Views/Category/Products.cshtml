@@ -1,0 +1,67 @@
+﻿@using Product_Managment_Model
+@using Produuct_Managment_Services
+@model Category
+
+<div class="d-flex container-fluid justify-content-between">
+	<h1> @Model.Name</h1>
+	@if (User.IsInRole(SD.Role_Store) || User.IsInRole(SD.Role_User_Admin))
+	{
+		<a asp-action="Create" class="btn btn-primary h-25 px-4 fw-bold align-self-center">Add new Product</a>
+	}
+</div>
+<hr class="productHr" />
+@if (Model.Products.Count != 0)
+{
+ <div class="container d-flex flex-wrap justify-content-sm-center justify-content-md-start">
+		@foreach (var item in Model.Products)
+		{
+			<div class="mb-4 flex-shrink-1" style="width: 19rem;">
+				<div class="card bg-dark text-light" style="width: 18rem; height: 400px">
+					<div class="card-body">
+						<h3 class="card-title text-center p-2">@item.Name</h3>
+						<div class="d-flex justify-content-between">
+							<h6 class="card-subtitle mb-2 text-body-secondary col-6" style="border-right: 1px solid whitesmoke">@item.User.Name</h6>
+							<h6 class="card-subtitle mb-2 text-body-secondary">Price: @item.Price <i class="bi bi-currency-euro"></i></h6>
+						</div>
+						<hr style="margin:3px 15% ;width: 70%" />
+						<p class="card-text " style="height:170px; overflow-y: auto">@item.Description</p>
+						<hr style="margin:5px 15% ;width: 70%" />
+						<div class="d-flex justify-content-between pb-0 mb-0">
+							<p>
+								Is Edible:
+								@if (item.IsEdible.ToString() == "True")
+								{
+									<i class="bi bi-check-circle"></i>
+								}
+								else
+								{
+									<i class="bi bi-x-circle"></i>
+								}
+							</p>
+							<p>Category: @item.Category.Name</p>
+						</div>
+					</div>
+					<div class="btn-group align-self-baseline pb-3">
+						@if (User.Identity.IsAuthenticated)
+						{
+							@if (User.IsInRole("Admin") || item.User.Email == User.Identity.Name)
+							{
+								<a class="btn btn-outline-warning mx-2 w-75" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+								<a class="btn btn-outline-danger w-75" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+							}
+							else if (User.IsInRole("Costumer"))
+							{
+								<a class="btn btn-outline-info w-100 ml-3 px-4" style="margin-left:10px">Add to cart <i class="bi bi-cart-plus"></i></a>
+							}
+						}
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+
+}
+else
+{
+	<h1>No product avalibe</h1>
+}
