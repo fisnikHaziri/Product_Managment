@@ -29,10 +29,6 @@ namespace Product_Managment_Repository.Repositories
 
 		public void Create(Product product, string userId)
 		{
-			if(product.Name == null)
-			{
-				product.Name = "Set Name";
-			}
 			product.UserId = userId;
 			_context.products.Add(product);
 			_context.SaveChanges();

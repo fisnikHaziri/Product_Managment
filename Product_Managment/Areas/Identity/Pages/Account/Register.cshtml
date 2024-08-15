@@ -12,21 +12,18 @@
             <h2>Create a new account.</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3 col-12">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                <label asp-for="Input.Email">Email</label>
+            <div class="form-floating mb-3 col-12 h-75">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-text" id="basic-addon1">@@</span>
+                    <input asp-for="Input.Email" type="text" class="form-control" aria-required="true" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+                </div>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
-            <div class="form-floating mb-3 col-12 d-flex">
-                <div class="form-floating col-4">
-                    <input asp-for="Input.Name" class="form-control" aria-required="true" placeholder="John Doe" />
-                    <label asp-for="Input.Name">Name</label>
-                    <span asp-validation-for="Input.Name" class="text-danger"></span>
-                </div>
-                <div class="form-floating col-4 mx-4">
-                    <input asp-for="Input.City" class="form-control" aria-required="true" placeholder="City" />
-                    <label asp-for="Input.City">City</label>
-                    <span asp-validation-for="Input.City" class="text-danger"></span>
+            <div class="form-floating mb-3 col-10 d-flex">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-text">First Name and City</span>
+                    <input asp-for="Input.Name" type="text" placeholder="Name" aria-label="First name" class="form-control">
+                    <input asp-for="Input.City" type="text" placeholder="City" aria-label="Last name" class="form-control">
                 </div>
             </div>
             <div class="form-floating mb-3 col-12 d-flex">

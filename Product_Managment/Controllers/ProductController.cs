@@ -39,9 +39,14 @@ namespace Product_Managment.Controllers
 
 
 		[Authorize(Roles = "Store,Admin")]
-        public IActionResult Create()
+        public IActionResult Create(string? categoryName)
 		{
 			ViewBag.Categories = new SelectList( _repo.ReturnCategories(),"CategoryId", "Name");
+			ViewData["Cattegory"] = "-- Select Category --";
+			if (categoryName != null)
+			{
+				ViewData["Cattegory"] = categoryName;
+			}
 			return View();
 		}
 		[HttpPost]

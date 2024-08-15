@@ -3,10 +3,12 @@
 
 <div class="d-flex container-fluid justify-content-between">
 	<h1> Products </h1>
-	@if (User.IsInRole(SD.Role_Store) || User.IsInRole(SD.Role_User_Admin))
-	{
-	<a asp-action="Create" class="btn btn-primary h-25 px-4 fw-bold align-self-center">Add new Product</a>
-	}
+	<div class="d-flex h-75 align-items-baseline">
+		@if (User.IsInRole(SD.Role_Store) || User.IsInRole(SD.Role_User_Admin))
+		{
+		<a asp-action="Create" class="btn btn-primary h-25 px-4 fw-bold align-self-center">Add new Product</a>
+		}
+	</div>
 </div>
 <hr class="productHr" />
 @if(Model != null)

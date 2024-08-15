@@ -33,10 +33,6 @@
         <div class="form-group p-2">
             <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories">
                 <option value="" disabled selected hidden> -- Select Category -- </option>
-                @foreach (var item in ViewBag.Categories)
-                {
-                    <option value="@item.Value">@item.Text</option>
-                }
             </select>
             <span asp-validation-for="CategoryId" class="text-danger" />
         </div>

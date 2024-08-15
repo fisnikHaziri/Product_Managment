@@ -17,7 +17,7 @@ namespace Product_Managment_Model
 		[Range(0, 999999.99, ErrorMessage = "Please enter a valid price.")]
 		public decimal? Price { get; set; }
 		public int? Stock { get; set; }
-		public bool? IsEdible { get; set; }
+		public bool IsEdible { get; set; }
 
         //Relationships
         [ForeignKey("CategoryId")]
