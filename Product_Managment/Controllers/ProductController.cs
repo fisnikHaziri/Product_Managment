@@ -33,6 +33,7 @@ namespace Product_Managment.Controllers
 
         public IActionResult Index()
 		{
+			ViewData["ProductsPage"] = "active";
 			var data = _repo.GetAll();
 			return View(data);
 		}

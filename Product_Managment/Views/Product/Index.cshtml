@@ -1,12 +1,12 @@
 ﻿@using Produuct_Managment_Services
 @model List<Product_Managment_Model.Product>
 
-<div class="d-flex container-fluid justify-content-between">
+<div class="d-flex align-items-center container-fluid justify-content-between my-3">
 	<h1> Products </h1>
-	<div class="d-flex h-75 align-items-baseline">
+	<div class="d-flex h-75">
 		@if (User.IsInRole(SD.Role_Store) || User.IsInRole(SD.Role_User_Admin))
 		{
-		<a asp-action="Create" class="btn btn-primary h-25 px-4 fw-bold align-self-center">Add new Product</a>
+		<a asp-action="Create" class="btn btn-primary h-25 px-4 fw-bold align-self-baseline">Add new Product</a>
 		}
 	</div>
 </div>
@@ -21,8 +21,8 @@
 			<div class="card-body">
 				<h3 class="card-title text-center p-2">@product.Name</h3>
 				<div class="d-flex justify-content-between">
-					<h6 class="card-subtitle mb-2 text-body-secondary col-6" style="border-right: 1px solid whitesmoke">@product.User.Name</h6>
-							<h6 class="card-subtitle mb-2 text-body-secondary">Price: @product.Price <i class="bi bi-currency-euro"></i></h6>
+							<h6 class="card-subtitle mb-2 text-primary col-6" style="border-right: 1px solid whitesmoke">@product.User.Name</h6>
+							<h6 class="card-subtitle mb-2 text-light">Price: @product.Price <i class="bi bi-currency-euro"></i></h6>
 				</div>
 				<hr style="margin:3px 15% ;width: 70%" />
 				<p class="card-text " style="height:170px; overflow-y: auto">@product.Description</p>

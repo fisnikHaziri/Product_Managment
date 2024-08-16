@@ -17,6 +17,7 @@ namespace Product_Managment.Controllers
 
 		public IActionResult Index()
 		{
+			ViewData["HomePage"] = "active";
 			return View();
 		}
 
