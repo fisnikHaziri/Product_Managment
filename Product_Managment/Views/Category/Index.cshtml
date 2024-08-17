@@ -9,11 +9,17 @@
 	}
 </div>
 <hr class="productHr" />
-<table class="table table-dark text-light text-center ">
-	<thead>
-		<td>Name</td>
-		<td>Description</td>
-		<td>Amount of Products</td>
+<table class="table table-bordered border-dark-subtle table-hover table-light text-dark table-striped text-center ">
+	<thead class="fw-bold">
+		<td>
+			<h4 class="text-dark">Name</h4>
+		</td>
+		<td>
+			<h4 class="text-dark">Description</h4>
+		</td>
+		<td>
+			<h4 class="text-dark">Amount of Products</h4>
+		</td>
 		@if (User.IsInRole("Admin"))
 		{
 			<td></td>
@@ -26,8 +32,8 @@
 			{
 				<tr>
 					<td>
-						<a asp-action="Products" asp-route-id="@categoy.CategoryId" class="btn btn-light" style=" min-width: 7.5rem ;">
-							<h6>
+						<a asp-action="Products" asp-route-id="@categoy.CategoryId" class="btn btn-dark" style=" min-width: 7.5rem ;">
+							<h6 class="text-light">
 								@categoy.Name
 							</h6>
 						</a>
