@@ -56,5 +56,14 @@ namespace Product_Managment_Repository.Repositories
 			var data = _context.products.FirstOrDefault(x => x.Id == id);
 			return data;
 		}
+
+		public List<Product> GetByName(String productName)
+		{
+			var product = _context.products.Where(x => x.Name.Contains(productName)).
+				Include(p => p.User)
+				.Include(p => p.Category)
+				.ToList();
+			return product;
+		}
 	}
 }

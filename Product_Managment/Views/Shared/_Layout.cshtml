@@ -32,14 +32,10 @@
                         </li>
                     </ul>
                     <div class="d-flex">
-                    <form class="d-flex">
-                        <input class="form-control me-sm-2" type="search" placeholder="Search for product">
-                        <button class="text-center btn btn-light px-3 fw-semibold my-2 my-sm-0" style="letter-spacing: 1px" type="submit">
-                            <a class="text-decoration-none text-dark" asp-controller="Products" asp-action="Search">
-                                Search
-                            </a>
-                        </button>
-                    </form>
+                        <form class="d-flex" asp-controller="Product" asp-action="Index">
+                            <input class="form-control me-sm-2" type="search" name="searchString" placeholder="Search for product" arial-label="Search">
+                            <button class="text-center btn btn-light px-3 fw-semibold my-2 my-sm-0" type="submit">Search </button>
+                        </form>
                     <partial name="_LoginPartial" />
                     </div>
                 </div>

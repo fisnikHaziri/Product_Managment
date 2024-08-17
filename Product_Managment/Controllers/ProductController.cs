@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Product_Managment_DataSource;
 using Product_Managment_Model;
 using Product_Managment_Repository.Interface;
+using Product_Managment_Repository.Repositories;
 using Produuct_Managment_Services;
 using System.Security.Claims;
 
@@ -31,15 +33,30 @@ namespace Product_Managment.Controllers
 			_repo = repo;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
 		{
 			ViewData["ProductsPage"] = "active";
-			var data = _repo.GetAll();
-			return View(data);
+			if (!String.IsNullOrEmpty(searchString)) 
+			{
+				var product = _repo.GetByName(searchString);
+				return View(product);
+			}
+			
+			var products = _repo.GetAll();
+
+
+			return View(products);
 		}
 
 
-		[Authorize(Roles = "Store,Admin")]
+        public IActionResult Search(string searchTerm)
+        {
+            var products = _repo.GetByName(searchTerm);
+            return View("Index", products); // Assuming you want to display results on the same Index page
+        }
+
+
+        [Authorize(Roles = "Store,Admin")]
         public IActionResult Create(string? categoryName)
 		{
 			ViewBag.Categories = new SelectList( _repo.ReturnCategories(),"CategoryId", "Name");
