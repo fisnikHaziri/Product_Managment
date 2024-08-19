@@ -16,5 +16,7 @@ namespace Product_Managment_Repository.Interface
 		public void Update(Product product);
 		public void Delete(Product product);
 		public IEnumerable<Category> ReturnCategories();
+
+		public Task<List<Product>> MyItems(string UserName);
 	}
 }

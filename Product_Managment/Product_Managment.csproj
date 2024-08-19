@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Product\MyItems.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
@@ -27,6 +31,18 @@
     <ProjectReference Include="..\Product_Managment_DataSource\Product_Managment_DataSource.csproj" />
     <ProjectReference Include="..\Product_Managment_Repository\Product_Managment_Repository.csproj" />
     <ProjectReference Include="..\Produuct_Managment_Services\Produuct_Managment_Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Product\MyItems.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Product\MyItems.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Product\MyItems.cshtml" />
   </ItemGroup>
 
 </Project>

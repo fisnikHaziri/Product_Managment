@@ -52,9 +52,14 @@ namespace Product_Managment.Controllers
         public IActionResult Search(string searchTerm)
         {
             var products = _repo.GetByName(searchTerm);
-            return View("Index", products); // Assuming you want to display results on the same Index page
+            return View("Index", products);
         }
 
+		public async Task<IActionResult> MyItems(string UserName)
+		{
+			var data = await _repo.MyItems(UserName);
+			return View("Index", data);
+		}
 
         [Authorize(Roles = "Store,Admin")]
         public IActionResult Create(string? categoryName)

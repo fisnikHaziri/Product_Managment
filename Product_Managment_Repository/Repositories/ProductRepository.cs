@@ -65,5 +65,14 @@ namespace Product_Managment_Repository.Repositories
 				.ToList();
 			return product;
 		}
+
+		public async Task<List<Product>> MyItems(string UserName)
+		{
+			var data = await _context.products
+				.Include(x => x.User)
+				.Include(x => x.Category)
+				.Where(x => x.User.Email == UserName).ToListAsync();
+			return data;
+		}
 	}
 }
